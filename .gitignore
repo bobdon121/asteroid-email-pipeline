@@ -1,0 +1,57 @@
+# WAT Framework - Git Ignore
+
+# Sensitive credentials (NEVER commit these)
+.env
+credentials.json
+token.json
+token.pickle
+*.key
+*.pem
+*_secret*
+
+# Temporary processing files
+.tmp/
+*.tmp
+*.temp
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+*.log
+logs/
+
+# OS
+Thumbs.db
+.DS_Store
+nul

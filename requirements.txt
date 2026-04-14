@@ -1,0 +1,14 @@
+# Feather Email Generation Pipeline - Dependencies
+
+# Environment
+python-dotenv
+
+# Claude AI
+anthropic
+
+# Google Sheets
+gspread
+google-api-python-client
+google-auth-httplib2
+google-auth-oauthlib
+google-auth

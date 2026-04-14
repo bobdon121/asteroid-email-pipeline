@@ -1,0 +1,40 @@
+{
+  "timezone": "America/New_York",
+  "send_days": ["Tuesday", "Wednesday", "Thursday"],
+  "send_time_start": "09:00",
+  "send_time_end": "11:00",
+  "research_day": "Sunday",
+  "research_batch_size": 10,
+
+  "qualification_min_stars": 2,
+
+  "google_sheet_id": "YOUR_GOOGLE_SHEET_ID_HERE",
+  "tracking_domain": "",
+  "unsubscribe_url": "",
+
+  "service_info": {
+    "company_name": "Asteroid.ai",
+
+    "sender_name": "Yash Tyagi",
+    "sender_title": "GTM Lead, Asteroid.ai",
+
+    "calendar_link": "https://YOUR_CALENDAR_LINK_HERE",
+
+    "cta_variations": [
+      "Got 15 minutes this week? Here's my calendar: https://YOUR_CALENDAR_LINK_HERE",
+      "Worth a 15-minute call? Here's my calendar: https://YOUR_CALENDAR_LINK_HERE",
+      "Would 15 minutes work this week? Happy to walk you through it: https://YOUR_CALENDAR_LINK_HERE",
+      "Open to a short walkthrough? Grab a time here: https://YOUR_CALENDAR_LINK_HERE",
+      "Worth a quick call? Here's my calendar: https://YOUR_CALENDAR_LINK_HERE"
+    ],
+
+    "company_details_prompt": "ASTEROID.AI COMPANY DETAILS (Only Use These Facts)\n\nAsteroid.ai is a YC-backed AI automation platform that enables healthcare organizations to automate any browser-based or legacy-system workflow without requiring APIs. In an industry where the vast majority of systems (EHRs, payer portals, CTMS, fax platforms) lack modern integration points, Asteroid is the only way to automate them.\n\nCORE AGENT TYPES\n\nBrowser Agents\nOperate directly within web-based applications. They log into payer portals, navigate EHR interfaces, submit forms, upload documents, and extract data through the browser, exactly as a human operator would.\n\nComputer-Use Agents (CUA)\nFor systems with no web interface at all. Legacy desktop applications accessed through Citrix virtual desktops or remote sessions. Agents see and interact with the screen at the pixel level, navigating desktop applications that have no browser or API access whatsoever.\n\nVoice-to-Browser Pipeline\nIntegrates with AI voice agent platforms. A voice agent completes a phone call, and the transcript is automatically passed to an Asteroid browser agent via API. The browser agent then executes required actions in the target system (booking appointments, filling forms, updating records).\n\nKEY DIFFERENTIATORS\n- No APIs Required: Agents interact via browser/screen, not code integrations. Most EHRs, payer portals, and CTMS lack APIs entirely.\n- HIPAA Compliant: Encrypted infrastructure, full audit trails on every execution.\n- Minutes to Production: Agents built with Astro no-code builder. Delfa went from zero to production in 30 minutes.\n- Self-Healing Agents: Detect portal changes and adapt without manual reconfiguration. Payer portals change frequently; Asteroid adapts.\n- Computer-Use/Citrix: First healthcare-deployed CUA for legacy desktop systems.\n- Human-in-the-Loop: Guardrails, evaluations, and human oversight built into every workflow.\n- Works Across Any Portal: Not locked to specific EHRs or payers. Scales horizontally.\n\nREFERENCE CUSTOMERS\n\nThyme Care (Oncology navigation, $82M raised, Nashville)\n- $3,000/mo contract\n- 1,000s of daily browser agent executions\n- Automates portal updates and fax workflows via Documo\n- Enterprise-grade reliability at scale\n\nVitable Health (Direct primary care)\n- VP of Business Operations (non-technical) independently builds agents\n- Self-serve across 10+ payer carrier portals using Astro no-code builder\n- No engineering required\n\nMoonset Health (Hospice)\n- CUA agents navigate 10+ legacy hospice EMR systems across the US via Citrix\n- First and most advanced desktop agent deployment in healthcare\n- A capability competitors cannot match\n\nDelfa (Clinical trial enrollment)\n- Voice agent pre-screens patients, Asteroid fills CTMS screening questionnaires\n- 0% to 100% form completion rate\n- 95% engineering effort saved\n- Zero to production in 30 minutes\n\nInTouchNow (UK-based AI receptionist for GP practices)\n- Voice-to-browser pipeline for GP appointment booking\n- Automates booking in NHS and private systems 24/7\n\nUSE CASES\n\n1. Prior Authorization Automation: 15-45 min per submission manually, across 10-50+ different payer portals. Asteroid automates submission, document upload, and status tracking. Self-healing agents adapt when portals change. At 500 submissions/day, saves ~150 FTE-hours daily ($780K/year for a mid-sized org).\n\n2. Coverage Verification & Eligibility: 5-10 min per check per portal. Asteroid runs checks across all payer portals in parallel. Vitable demonstrates this across 10+ carrier portals. At 1,000 checks/day, saves 80-160 FTE-hours daily ($400K-$800K/year).\n\n3. Claims Status Checks: 3-5 min per claim across dozens of portals. Agents perform batch checks, return structured results. Faster denial detection recovers 5-15% of previously lost revenue.\n\n4. EHR Data Entry & Retrieval: 10-20 min per patient record manually. Browser agents for web-based EHRs, CUA for Citrix/desktop systems. Moonset Health demonstrates at scale.\n\n5. Clinical Trial Enrollment: Voice agent handles pre-screening call, Asteroid fills CTMS forms. Delfa achieved 95% engineering effort saved, 30 min to production.\n\n6. Fax & Document Workflows: 5-15 min per document manually. Thyme Care automates via Documo at 1,000s of daily executions.\n\n7. Appointment Booking (Voice-to-Browser): Voice agent handles patient call 24/7, Asteroid books in practice management system. InTouchNow demonstrates for UK GP practices.\n\nKEY STATS\n- Healthcare orgs spend $40B+ annually on administrative labor tied to manual browser-based operations\n- Prior auth processing alone costs the US healthcare system $31B+ annually\n- A single Asteroid deployment can replace 5-20 FTEs worth of manual labor\n- Reduces per-submission time from 20-30 minutes to 2-3 minutes\n- Reduces coverage verification from 5-10 minutes to under 60 seconds",
+
+    "research_context": "Company: Asteroid.ai (asteroid.ai)\nYC-backed: Yes\nWhat we do: AI automation platform purpose-built for workflows that run in browsers and legacy desktop applications. Unlike traditional integration platforms that require APIs, Asteroid's agents interact with systems the same way humans do -- navigating web interfaces, filling forms, clicking buttons, reading screens, and uploading documents. In healthcare, where the vast majority of systems (EHRs, payer portals, CTMS, fax platforms) lack modern APIs, this is the only way to automate them. Agents are HIPAA compliant, self-healing (they adapt when portal UIs change), and can be built in minutes using the Astro no-code builder.\nKey proof points:\n- Thyme Care ($82M raised, oncology navigation, Nashville): 1,000s of daily browser agent executions across payer portals and Documo for fax workflows. $3,000/mo.\n- Vitable Health (direct primary care): VP of Business Operations (non-technical) independently builds agents across 10+ payer carrier portals using Astro no-code builder.\n- Moonset Health (hospice): CUA agents navigate 10+ legacy hospice EMR systems across the US via Citrix. First healthcare deployment of computer-use agents.\n- InTouchNow (UK, AI receptionist for GP practices): Voice-to-browser pipeline automating GP appointment booking in NHS and private systems 24/7.\n- Delfa (clinical trials): Zero to production in 30 minutes. 95% engineering effort saved. Voice agent pre-screens patients, Asteroid fills CTMS screening questionnaires.\nIdeal client profile:\n- Primary: Mid-market healthcare operations (Series A+, 50-500 employees) with large ops teams performing 100s-1,000s of repetitive browser tasks daily. Deal size: $6K-$50K/month.\n- Secondary: Enterprise payer services and RCM firms (500-10,000+ employees). Deal size: $50K-$200K+/month.\n- Tertiary: Digital health startups (5-50 employees) needing legacy system integration. Deal size: $3K-$10K/month.\nFastest path to revenue: Prior authorization and payer portal automation."
+  },
+
+  "templates": {
+    "directory": "templates/",
+    "rotation": "round-robin"
+  }
+}

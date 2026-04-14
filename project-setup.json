@@ -1,0 +1,154 @@
+{
+  "project": "Feather HQ Email Generation Automation",
+  "version": "1.0",
+  "description": "Reads prospects from Google Sheets, generates personalized outreach emails using Claude AI (Feather HQ email writer), and writes subject + body back to the sheet. Nothing is sent automatically — review the sheet and send manually.",
+  "built_for": "Feather HQ (featherhq.com) — AI voice agent platform",
+  "sender": {
+    "name": "Yash Tyagi",
+    "title": "GTM Lead, Feather"
+  },
+
+  "how_it_works": [
+    "1. Add prospects to Google Sheet (Prospects tab) with Status = Pending",
+    "2. Run: python tools/run_email_automation.py",
+    "3. Claude generates a personalized email per prospect",
+    "4. Subject goes to Col K, Body goes to Col L, Status becomes Ready",
+    "5. Open the sheet, review the emails, send manually"
+  ],
+
+  "requirements": {
+    "python": "3.11 recommended (3.14 will break dependencies — do not use)",
+    "install_command": "pip install -r requirements.txt",
+    "api_keys_needed": [
+      "ANTHROPIC_API_KEY — get from console.anthropic.com"
+    ],
+    "google_oauth_needed": [
+      "credentials.json — OAuth 2.0 Desktop App from console.cloud.google.com",
+      "Enable: Google Sheets API + Google Drive API",
+      "Add your Gmail as a test user on the OAuth consent screen"
+    ]
+  },
+
+  "setup_steps": [
+    {
+      "step": 1,
+      "title": "Clone the repo",
+      "command": "git clone <your-private-repo-url>",
+      "notes": "Ask the project owner for access to the private GitHub repo"
+    },
+    {
+      "step": 2,
+      "title": "Install dependencies",
+      "command": "pip install -r requirements.txt"
+    },
+    {
+      "step": 3,
+      "title": "Create .env file",
+      "notes": "Copy .env.example to .env and fill in your Anthropic API key",
+      "command": "copy .env.example .env  (Windows) / cp .env.example .env (Mac/Linux)",
+      "required_values": {
+        "ANTHROPIC_API_KEY": "Your Claude API key from console.anthropic.com"
+      }
+    },
+    {
+      "step": 4,
+      "title": "Get Google OAuth credentials",
+      "notes": [
+        "Go to console.cloud.google.com",
+        "Create a project",
+        "Enable Google Sheets API and Google Drive API",
+        "Go to APIs & Services → Credentials → Create OAuth 2.0 Client ID",
+        "Application type: Desktop app",
+        "Download JSON → rename to credentials.json → place in project root",
+        "Go to OAuth consent screen → Test users → add your Gmail"
+      ]
+    },
+    {
+      "step": 5,
+      "title": "Create Google Sheet",
+      "command": "python tools/setup_google_sheet.py",
+      "notes": "A browser will open — sign in with your Gmail and click Allow. The sheet ID will be saved to config automatically."
+    },
+    {
+      "step": 6,
+      "title": "Update calendar link",
+      "file": "config/email_automation_config.json",
+      "notes": "Replace all instances of https://YOUR_YASH_CALENDAR_LINK_HERE with Yash's actual booking link"
+    },
+    {
+      "step": 7,
+      "title": "Add prospects to Google Sheet",
+      "notes": [
+        "Open the sheet created in step 5",
+        "Go to Prospects tab",
+        "Fill in: Company Name (A), Website (B), Contact Email (C), Contact Name (D), Industry (E)",
+        "Set Status (N) = Pending for each row",
+        "Or use: python tools/manage_google_sheet.py add --name 'Acme' --website 'acme.com' --email 'john@acme.com' --contact 'John Doe' --industry 'Insurance'"
+      ]
+    },
+    {
+      "step": 8,
+      "title": "Run the pipeline",
+      "commands": {
+        "generate_all": "python tools/run_email_automation.py",
+        "limit_to_5": "python tools/run_email_automation.py --max-emails 5",
+        "dry_run_preview": "python tools/run_email_automation.py --dry-run"
+      }
+    }
+  ],
+
+  "google_sheet": {
+    "name": "Cold Email Campaign Tracker",
+    "url": "https://docs.google.com/spreadsheets/d/18BEw9s4EMEvF_z7-HHRHabdarXqON-pDKTK-OtDCZec",
+    "id": "18BEw9s4EMEvF_z7-HHRHabdarXqON-pDKTK-OtDCZec",
+    "note": "This is the original sheet. On a new system, run setup_google_sheet.py to create a fresh one — the new ID will be saved automatically.",
+    "tabs": ["Prospects", "Campaign Stats", "Templates", "Send Log"],
+    "key_columns": {
+      "A": "Company Name",
+      "B": "Website",
+      "C": "Contact Email",
+      "D": "Contact Name",
+      "E": "Industry",
+      "J": "Research Data (optional — paste manual research here)",
+      "K": "Email Subject (OUTPUT — written by pipeline)",
+      "L": "Email Body (OUTPUT — written by pipeline)",
+      "N": "Status (set to Pending for new rows)"
+    },
+    "status_values": {
+      "Pending": "New prospect, email not yet generated",
+      "Ready": "Email generated — review cols K & L",
+      "Disqualified": "Star rating less than 3 — skipped by email writer"
+    }
+  },
+
+  "file_structure": {
+    "tools/run_email_automation.py": "Main script — run this to generate emails",
+    "tools/generate_email.py": "Claude email writer with Feather prompt",
+    "tools/manage_google_sheet.py": "Google Sheet read/write operations",
+    "tools/setup_google_sheet.py": "One-time sheet creation script",
+    "templates/template1.md": "Feather outreach email structure",
+    "config/email_automation_config.json": "All settings — sender info, Feather company details, CTA variations",
+    ".env": "API keys (never commit this file)",
+    "credentials.json": "Google OAuth file (never commit this file)",
+    "token.pickle": "Auto-generated after first OAuth login (never commit this file)"
+  },
+
+  "files_never_commit": [
+    ".env",
+    "credentials.json",
+    "token.pickle"
+  ],
+
+  "files_to_transfer_manually": {
+    ".env": "Create fresh on the new system with your own Anthropic API key",
+    "credentials.json": "Download fresh from Google Cloud Console on the new system",
+    "token.pickle": "Auto-generated on first run of setup_google_sheet.py"
+  },
+
+  "troubleshooting": {
+    "access_denied_403": "Go to Google Cloud Console → APIs & Services → OAuth consent screen → Test users → add your Gmail",
+    "credentials_json_json": "Windows sometimes double-adds the extension. Rename credentials.json.json to credentials.json",
+    "no_pending_prospects": "Make sure Status column (N) is set to exactly 'Pending' for each row you want processed",
+    "token_expired": "Delete token.pickle and run setup_google_sheet.py again to re-authorize"
+  }
+}
